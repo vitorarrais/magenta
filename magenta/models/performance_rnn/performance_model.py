@@ -27,7 +27,8 @@ import tensorflow as tf
 # the control sequence to vary with clock time.
 PerformanceControlState = collections.namedtuple(
     'PerformanceControlState', ['current_perf_index', 'current_perf_step'])
-
+    
+FOO = 'FOOLISHER VARIABLE IN THE WORLD'
 
 class PerformanceRnnModel(events_rnn_model.EventSequenceRnnModel):
   """Class for RNN performance generation models."""

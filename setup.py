@@ -45,12 +45,13 @@ REQUIRED_PACKAGES = [
     'mido == 1.2.6',
     'mir_eval >= 0.4',
     # 'numpy == 1.13.3',  # higher versions confuse pylint.
+    'numpy',  # higher versions confuse pylint.
     'pandas >= 0.18.1',
     'pretty_midi >= 0.2.6',
     'protobuf',
     'pygtrie >= 2.3',
     # 'pylint < 2.0.0;python_version=="2.7"',
-    'pyfluidsynth',
+    # 'pyfluidsynth',
     'python-rtmidi >= 1.1, < 1.2',  # 1.2 breaks us
     'scipy >= 0.18.1',
     'sk-video',
