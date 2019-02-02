@@ -44,12 +44,12 @@ REQUIRED_PACKAGES = [
     'matplotlib >= 1.5.3',
     'mido == 1.2.6',
     'mir_eval >= 0.4',
-    'numpy == 1.13.3',  # higher versions confuse pylint.
+    # 'numpy == 1.13.3',  # higher versions confuse pylint.
     'pandas >= 0.18.1',
     'pretty_midi >= 0.2.6',
     'protobuf',
     'pygtrie >= 2.3',
-    'pylint < 2.0.0;python_version=="2.7"',
+    # 'pylint < 2.0.0;python_version=="2.7"',
     'pyfluidsynth',
     'python-rtmidi >= 1.1, < 1.2',  # 1.2 breaks us
     'scipy >= 0.18.1',
@@ -100,6 +100,7 @@ CONSOLE_SCRIPTS = [
     'magenta.models.onsets_frames_transcription.onsets_frames_transcription_transcribe',
     'magenta.models.performance_rnn.performance_rnn_create_dataset',
     'magenta.models.performance_rnn.performance_rnn_generate',
+    'magenta.models.performance_rnn.gen',
     'magenta.models.performance_rnn.performance_rnn_train',
     'magenta.models.pianoroll_rnn_nade.pianoroll_rnn_nade_create_dataset',
     'magenta.models.pianoroll_rnn_nade.pianoroll_rnn_nade_generate',

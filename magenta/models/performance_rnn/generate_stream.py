@@ -22,9 +22,9 @@ def gen_wav(seq,
   normalizer = float(np.iinfo(np.int16).max)
   array_of_ints = np.array(
       np.asarray(array_of_floats) * normalizer, dtype=np.int16)
-  f = open('/tmp/wav.wav', 'w')
-  wavfile.write(f, sample_rate, array_of_ints)
-  f.close()
+#   f = open('/tmp/wav.wav', 'w')
+  wavfile.write('/tmp/wav.wav', sample_rate, array_of_ints)
+#   f.close()
 
 # Constants.
 BUNDLE_DIR='/Users/vitorarrais/Projects/Repositories/magenta/magenta/models/performance_rnn/'
