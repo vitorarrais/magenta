@@ -101,7 +101,6 @@ CONSOLE_SCRIPTS = [
     'magenta.models.onsets_frames_transcription.onsets_frames_transcription_transcribe',
     'magenta.models.performance_rnn.performance_rnn_create_dataset',
     'magenta.models.performance_rnn.performance_rnn_generate',
-    'magenta.models.performance_rnn.ai_generator', # I don't really need it
     'magenta.models.performance_rnn.performance_rnn_train',
     'magenta.models.pianoroll_rnn_nade.pianoroll_rnn_nade_create_dataset',
     'magenta.models.pianoroll_rnn_nade.pianoroll_rnn_nade_generate',

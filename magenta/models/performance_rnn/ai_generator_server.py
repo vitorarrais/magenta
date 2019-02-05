@@ -8,7 +8,8 @@ from magenta.models.performance_rnn import ai_generator as generator
 # prepare simple logging
 logger = logging.getLogger('SOCKET_SERVER')
 handler = logging.StreamHandler()
-formatter = logging.Formatter('%(asctime)s %(name)-12s %(levelname)-8s %(message)s')
+formatter = logging.Formatter( \
+    '%(asctime)s %(name)-12s %(levelname)-8s %(message)s')
 handler.setFormatter(formatter)
 logger.addHandler(handler)
 logger.setLevel(logging.DEBUG)
@@ -23,8 +24,8 @@ class RequestHandler(socketserver.BaseRequestHandler):
         logger.debug('Received chunk of data: %s' % self.data)
         recv_chunk = json.loads(self.data.decode('utf-8'))
         if 'speed' in recv_chunk :
-            if recv_chunk['speed'] > 0:
-                # just update the speed var
+            # avoid slowing down the speed to zero 
+            if int(recv_chunk['speed']) > 0:
                 speed = recv_chunk['speed']
         else:
             # create an in-memory song file

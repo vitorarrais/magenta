@@ -1,6 +1,6 @@
 import ast
 import os
-import time
+# import time
 import io
 
 import tensorflow as tf
@@ -16,7 +16,10 @@ from scipy.io import wavfile
 import numpy as np
 
 MODEL = 'multiconditioned_performance_with_dynamics'
-BUNDLE_PATH='/Users/vitorarrais/Projects/Repositories/ai-server/python/magenta/magenta/models/performance_rnn/multiconditioned_performance_with_dynamics.mag'
+## todo: store .mag in a docker volume after dockerize it
+CONFIG_DIR = '/Users/vitorarrais/Projects/Repositories/ai-server/python/magenta/magenta/models/performance_rnn'
+BUNDLE_PATH = os.path.join(CONFIG_DIR, MODEL+'.mag')
+# BUNDLE_PATH = os.path.join(os.path.dirname(os.path.realpath(__file__)), MODEL+'.mag')
 
 FLAGS = tf.app.flags.FLAGS
 tf.app.flags.DEFINE_string(
@@ -66,7 +69,7 @@ tf.app.flags.DEFINE_string(
 tf.app.flags.DEFINE_string(
     'disable_conditioning', None,
     'When optional conditioning is available, a string representation of a '
-    'Boolean indicating whether or not to disable conditioning. Similar to '
+    'Boolean init whether or not to disable conditioning. Similar to '
     'control signals, this can also be a list of Booleans; when it is a list, '
     'the other conditioning variables will be ignored for segments where '
     'conditioning is disabled.')
@@ -220,9 +223,9 @@ def run(generator, speed):
   tf.logging.debug('primer_sequence: %s', primer_sequence)
   tf.logging.debug('generator_options: %s', generator_options)
 
-  # Make the generate request num_outputs times 
-  date_and_time = time.strftime('%Y-%m-%d_%H%M%S')
-  digits = len(str(FLAGS.num_outputs))
+    # Make the generate request num_outputs times 
+    #   date_and_time = time.strftime('%Y-%m-%d_%H%M%S')
+    #   digits = len(str(FLAGS.num_outputs))
   for i in range(FLAGS.num_outputs):
     generated_sequence = generator.generate(primer_sequence, generator_options)
     array_of_floats = synth(
@@ -234,9 +237,8 @@ def run(generator, speed):
     wavfile.write(memfile, _DEFAULT_SAMPLE_RATE, array_of_ints)
     tf.logging.info('New song generated!')
     return memfile
-  
 
-def main(speed):
+def init(speed):
 
   bundle = get_bundle()
 
@@ -268,12 +270,4 @@ def main(speed):
     return run(generator, speed)
 
 def generate(speed):
-  return main(speed)
-
-def console_entry_point():
-    print('not enabled')
-    # tf.app.run(main)
-    pass
-
-if __name__ == '__main__':
-    console_entry_point()
+  return init(speed)
